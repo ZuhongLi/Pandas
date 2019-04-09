@@ -1,0 +1,75 @@
+1.
+sort_index（）按轴排序，
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4),
+index=dates, columns=list('ABCD'))
+print(df.sort_index(axis=1, ascending=False))
+2、
+df.sort_values()按值排序
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4),
+index=dates,
+columns=list('ABCD'))
+print(df.sort_values(by='B'))
+3、
+df.loc[dates[0]]使用标签获取横截面
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+print(df.loc[dates[0]])
+4、
+df.loc[:,['A','B']]通过标签选择多轴，
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+
+print(df.loc[:,['A','B']])
+print(df.loc['20170102':'20170104',['A','B']])
+5、
+df.iloc[3]通过传递的整数的位置选择
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+print(df.iloc[3])
+6、
+df.iloc[3:5,0:2]通过整数切片，类似于numpy/python
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+print(df.iloc[3:5,0:2])
+7、
+df.iat[1,1]要快速访问标量(等同于先前的方法)
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+print(df.iat[1,1])
+8、
+bool索引，使用单列的值来选择数据
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+print(df[df.A > 0])
+9、
+使用isin()方法进行过滤
+dates = pd.date_range('20170101', periods=6)
+df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
+
+df2 = df.copy()
+df2['E'] = ['one', 'one','two','three','four','three']
+print(df2)
+print("============= start to filter =============== ")
+print(df2[df2['E'].isin(['two','four'])])
+10、
+将数据划分为不同的元组
+ages=[18,22,24,26,28,30,32,34,36,38,40,42,44,50,55,60,70,75]
+bins = [20,40,60]
+ages = pd.cut(ages,bins)
+
+11、
+选出一个DataFrame中超过3或小于-3的值
+data = pd.Dataframe(np.ramdon.randn(1000,4))
+col = data[2]
+data2 = col[np.abs(col)>3]
+#打印绝对值>=3的行
+data3 = col[(np.abs(col)>3).any(1)]
+12、
+字符串操作
+val = 'a,b  guide'
+val = val.splite(',') #输出:[a  b  guide]
+piece = [x.strip() for x in val]
+first , second ,third = piece
+'::'.join(piece)# 输出：a::b::guide
