@@ -1,0 +1,35 @@
+一、Pandas Panel面板
+data
+数据采取各种形式，如：ndarray，series，map，lists，dict，constant和另一个数据帧(DataFrame)
+items       axis=0
+major_axis  axis=1
+minor_axis  axis=2
+dtype       每列的数据类型
+copy        复制数据，默认 - false
+
+
+二、Pandas基本功能
+1
+axes
+返回行轴标签列表。print s.axes 输出：[RangeIndex(start=0, stop=4, step=1)]
+2
+dtype
+返回对象的数据类型(dtype)。
+3
+empty
+如果系列为空，则返回True。print s.empty 输出：False
+4
+ndim
+返回底层数据的维数，默认定义：1。  print s.ndim 输出：1
+5
+size
+返回基础数据中的元素数。print s.size 输出：4
+6
+values
+将系列作为ndarray返回。 print s.values 输出：[ 1.78737302 -0.60515881 0.18047664 -0.1409218 ]
+7
+head()
+返回前n行。  print s.head(2) 输出：0 0.720876       （换行） 1 -0.765898
+8
+tail()
+返回最后n行。print s.tail(2) 输出：2 -0.608592     （换行）3 -2.341413
