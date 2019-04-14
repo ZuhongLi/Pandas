@@ -1,0 +1,11 @@
+一、Pandas函数应用
+1.
+pipe()
+df = pd.DataFrame(np.random.randn(5,3),columns=['col1','col2','col3'])
+df.pipe(adder,2)print df
+2、
+显示如何使用字典，行索引和列索引列表创建数据帧(DataFrame)
+data = [{'a': 1, 'b': 2},{'a': 5, 'b': 10, 'c': 20}]
+#With two column indices, values same as dictionary keys
+df1 = pd.DataFrame(data, index=['first', 'second'],
+columns=['a', 'b']）
