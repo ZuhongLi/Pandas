@@ -39,3 +39,19 @@ rename()方法允许基于一些映射(字典或者系列)或任意函数来重�
 df1 = pd.DataFrame(np.random.randn(6,3),columns=['col1','col2','col3'])print df1
 print ("After renaming the rows and columns:")print df1.rename(columns={'col1' : 'c1', 'col2' : 'c2'},
 index = {0 : 'apple', 1 : 'banana', 2 : 'durian'})
+
+
+三、Pandas迭代
+1.
+iteritems()示例
+df = pd.DataFrame(np.random.randn(4,3),columns=['col1','col2','col3'])for key,value in df.iteritems():
+print (key,value)
+2、
+iterrows()返回迭代器，产生每个索引值以及包含每行数据的序列
+df = pd.DataFrame(np.random.randn(4,3),columns = ['col1','col2','col3'])for row_index,row in df.iterrows():
+print (row_index,row)
+3、
+itertuples()方法将为DataFrame中的每一行返回一个产生一个命名元组的迭代器。元组的第一个元素将是行的相应索引值，而剩余的值是行值。
+df = pd.DataFrame(np.random.randn(4,3),columns = ['col1','col2','col3'])
+for row in df.itertuples():
+print (row)
