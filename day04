@@ -55,3 +55,25 @@ itertuples()方法将为DataFrame中的每一行返回一个产生一个命名�
 df = pd.DataFrame(np.random.randn(4,3),columns = ['col1','col2','col3'])
 for row in df.itertuples():
 print (row)
+
+四、Pandas排序
+1.
+使用sort_index()方法，通过传递axis参数和排序顺序，可以对DataFrame进行排序。 默认情况下，按照升序对行标签进行排序
+unsorted_df = pd.DataFrame(np.random.randn(10,2),index=[1,4,6,2,3,5,9,8,0,7],
+columns = ['col2','col1'])
+sorted_df=unsorted_df.sort_index()print (sorted_df)
+2、
+通过将布尔值传递给升序参数，可以控制排序顺序。 来看看下面的例子来理解一下
+unsorted_df = pd.DataFrame(np.random.randn(10,2),index=[1,4,6,2,3,5,9,8,0,7],columns = ['col2','col1'])
+sorted_df = unsorted_df.sort_index(ascending=False)print (sorted_df)
+3、
+过传递axis参数值为0或1，可以对列标签进行排序。 默认情况下，axis = 0，逐行排列。
+unsorted_df = pd.DataFrame(np.random.randn(10,2),index=[1,4,6,2,3,5,9,8,0,7],columns = ['col2','col1'])
+sorted_df=unsorted_df.sort_index(axis=1)
+print (sorted_df)
+4、
+像索引排序一样，sort_values()是按值排序的方法。它接受一个by参数，它将使用要与其排序值的DataFrame的列名称。
+unsorted_df = pd.DataFrame({'col1':[2,1,1,1],'col2':[1,3,2,4]})
+sorted_df = unsorted_df.sort_values(by='col1')
+
+print (sorted_df)
