@@ -1,0 +1,13 @@
+一、Pandas选项和自定义
+1.
+pd.get_option("display.max_rows")
+print ("display.max_rows = ", pd.get_option("display.max_rows"))
+2、
+pd.set_option('display.max_rows',80)
+pd.set_option("display.max_rows",80)
+3、
+使用set_option()，可以更改要显示的默认行数。
+pd.set_option("display.max_columns",32)
+4、
+reset_option接受一个参数，并将该值设置为默认值。
+pd.reset_option("display.max_rows")
