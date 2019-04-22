@@ -1,0 +1,27 @@
+一、Pandas选择和索引数据
+1
+.loc()
+基于标签
+2
+.iloc()
+基于整数
+3
+.ix()
+基于标签和整数
+1.
+loc需要两个单/列表/范围运算符，用","分隔。第一个表示行，第二个表示列
+df = pd.DataFrame(np.random.randn(8, 4),
+index = ['a','b','c','d','e','f','g','h'], columns = ['A', 'B', 'C', 'D'])
+print (df.loc[:,'A'])
+print (df.loc[:,['A','C']])
+print (df.loc[['a','b','f','h'],['A','C']])
+2、
+Pandas提供了各种方法，以获得纯整数索引。像python和numpy一样，第一个位置是基于0的索引。
+.iloc()
+df = pd.DataFrame(np.random.randn(8, 4), columns = ['A', 'B', 'C', 'D'])
+print (df.iloc[:4])
+print (df.iloc[1:5, 2:4])
+3、
+除了基于纯标签和整数之外，Pandas还提供了一种使用.ix()运算符进行选择和子集化对象的混合方法。
+df = pd.DataFrame(np.random.randn(8, 4), columns = ['A', 'B', 'C', 'D'])
+print (df.ix[:4])
