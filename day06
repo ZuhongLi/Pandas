@@ -25,3 +25,20 @@ print (df.iloc[1:5, 2:4])
 除了基于纯标签和整数之外，Pandas还提供了一种使用.ix()运算符进行选择和子集化对象的混合方法。
 df = pd.DataFrame(np.random.randn(8, 4), columns = ['A', 'B', 'C', 'D'])
 print (df.ix[:4])
+
+二、Pandas统计函数
+1.
+DatFrames和Panel都有pct_change()函数。此函数将每个元素与其前一个元素进行比较，并计算变化百分比。 默认情况下，pct_change()对列进行操作; 如果想应用到行上，那么可使用axis = 1参数。
+s = pd.Series([1,2,3,4,5,4])print (s.pct_change())
+df = pd.DataFrame(np.random.randn(5, 2))
+print (df.pct_change())
+2、
+协方差适用于系列数据。Series对象有一个方法cov用来计算序列对象之间的协方差。NA将被自动排除。
+s1 = pd.Series(np.random.randn(10))
+s2 = pd.Series(np.random.randn(10))
+print (s1.cov(s2))
+3、
+相关性显示了任何两个数值(系列)之间的线性关系。有多种方法来计算pearson(默认)，spearman和kendall之间的相关性。
+frame = pd.DataFrame(np.random.randn(10, 5), columns=['a', 'b', 'c', 'd', 'e'])
+print (frame['a'].corr(frame['b']))
+print (frame.corr())
