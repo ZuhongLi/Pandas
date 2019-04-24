@@ -42,3 +42,24 @@ print (s1.cov(s2))
 frame = pd.DataFrame(np.random.randn(10, 5), columns=['a', 'b', 'c', 'd', 'e'])
 print (frame['a'].corr(frame['b']))
 print (frame.corr())
+
+
+
+三、Pandas窗口函数
+1.
+.rolling() 这个函数可以应用于一系列数据。指定window=n参数并在其上应用适当的统计函数。
+df = pd.DataFrame(np.random.randn(10, 4),
+index = pd.date_range('1/1/2020', periods=10),
+columns = ['A', 'B', 'C', 'D'])
+print (df.rolling(window=3).mean())
+2、
+.expanding（）函数， 可以应用于一系列数据。 指定min_periods = n参数并在其上应用适当的统计函数。
+df = pd.DataFrame(np.random.randn(10, 4),
+index = pd.date_range('1/1/2018', periods=10),
+columns = ['A', 'B', 'C', 'D'])
+print (df.expanding(min_periods=3).mean())
+3、
+ewm()可应用于系列数据。指定com，span，halflife参数，并在其上应用适当的统计函数。它以指数形式分配权重。
+df = pd.DataFrame(np.random.randn(10, 4),
+index = pd.date_range('1/1/2019', periods=10),
+columns = ['A', 'B', 'C', 'D'])print (df.ewm(com=0.5).mean
