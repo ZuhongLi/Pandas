@@ -93,3 +93,63 @@ print (df.dropna())
 用标量值替换NA是fillna()函数的等效行为。
 df = pd.DataFrame({'one':[10,20,30,40,50,2000],'two':[1000,0,30,40,50,60]})
 print (df.replace({1000:10,2000:60}))
+
+
+五、Pandas分组
+1.
+Pandas对象可以分成任何对象。有多种方式来拆分对象，如 -
+obj.groupby(‘key’)
+obj.groupby([‘key1’,’key2’])
+obj.groupby(key,axis=1)
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df = pd.DataFrame(ipl_data)
+print (df.groupby('Team'))
+print (df.groupby(['Team','Year']).groups)
+2、
+使用groupby对象，可以遍历类似itertools.obj的对象。
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df = pd.DataFrame(ipl_data)
+grouped = df.groupby('Year')
+for name,group in grouped:
+print (name)
+print (group)
+3、
+使用get_group()方法，可以选择一个组。
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df = pd.DataFrame(ipl_data)
+
+grouped = df.groupby('Year')print (grouped.get_group(2014))
+4、
+聚合函数为每个组返回单个聚合值。当创建了分组(group by)对象，就可以对分组数据执行多个聚合操作。
+一个比较常用的是通过聚合或等效的agg方法聚合 -
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df = pd.DataFrame(ipl_data)
+
+grouped = df.groupby('Year')print (grouped['Points'].agg(np.mean))
+agg = grouped['Points'].agg([np.sum, np.mean, np.std])
+5、
+过滤根据定义的标准过滤数据并返回数据的子集。filter()函数用于过滤数据。
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+df = pd.DataFrame(ipl_data)filter = df.groupby('Team').filter(lambda x: len(x) >= 3)
+
+print (filter)
