@@ -114,3 +114,39 @@ rs = pd.merge(left, right, on='subject_id', how='left')
 rs = pd.merge(left, right, on='subject_id', how='right')
 rs = pd.merge(left, right, how='outer', on='subject_id')
 rs = pd.merge(left, right, on='subject_id', how='inner')
+
+
+三、Pandas级联
+1.
+concat()函数完成了沿轴执行级联操作的所有重要工作。下面代码中，创建不同的对象并进行连接
+one = pd.DataFrame({
+'Name': ['Alex', 'Amy', 'Allen', 'Alice', 'Ayoung'],
+'subject_id':['sub1','sub2','sub4','sub6','sub5'],
+'Marks_scored':[98,90,87,69,78]},
+index=[1,2,3,4,5])
+two = pd.DataFrame({
+'Name': ['Billy', 'Brian', 'Bran', 'Bryce', 'Betty'],
+'subject_id':['sub2','sub4','sub3','sub6','sub5'],
+'Marks_scored':[89,80,79,97,88]},
+index=[1,2,3,4,5])
+rs = pd.concat([one,two])print(rs)
+rs = pd.concat([one,two],keys=['x','y'])
+rs = pd.concat([one,two],keys=['x','y'],ignore_index=True)
+2、
+连接的一个有用的快捷方式是在Series和DataFrame实例的append方法。这些方法实际上早于concat()方法。 它们沿axis=0连接，即索引 -
+one = pd.DataFrame({
+'Name': ['Alex', 'Amy', 'Allen', 'Alice', 'Ayoung'],
+'subject_id':['sub1','sub2','sub4','sub6','sub5'],
+'Marks_scored':[98,90,87,69,78]},
+index=[1,2,3,4,5])
+two = pd.DataFrame({
+'Name': ['Billy', 'Brian', 'Bran', 'Bryce', 'Betty'],
+'subject_id':['sub2','sub4','sub3','sub6','sub5'],
+'Marks_scored':[89,80,79,97,88]},
+index=[1,2,3,4,5])
+rs = one.append(two)print(rs)
+rs = one.append([two,one,two])
+3、
+创建一个时间范围
+time = pd.date_range("12:00", "23:59", freq="30min").time
+print(time)
