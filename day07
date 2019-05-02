@@ -150,3 +150,16 @@ rs = one.append([two,one,two])
 创建一个时间范围
 time = pd.date_range("12:00", "23:59", freq="30min").time
 print(time)
+
+四、Pandas时间差
+1.
+通过传递字符串，可以创建一个timedelta对象。
+timediff = pd.Timedelta('2 days 2 hours 15 minutes 30 seconds')
+print(timediff)
+2、
+可以在Series/DataFrames上执行运算操作，并通过在datetime64 [ns]系列或在时间戳上减法操作来构造timedelta64 [ns]系列。
+s = pd.Series(pd.date_range('2018-1-1', periods=3, freq='D'))
+td = pd.Series([ pd.Timedelta(days=i) for i in range(3) ])
+df = pd.DataFrame(dict(A = s, B = td))
+df['C']=df['A']+df['B']
+print(df)
