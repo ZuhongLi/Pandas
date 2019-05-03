@@ -163,3 +163,34 @@ td = pd.Series([ pd.Timedelta(days=i) for i in range(3) ])
 df = pd.DataFrame(dict(A = s, B = td))
 df['C']=df['A']+df['B']
 print(df)
+
+五、Pandas数据分类
+1.
+通过在pandas对象创建中将dtype指定为“category”。
+import pandas as pd
+s = pd.Series(["a","b","c","a"], dtype="category")
+print (s)
+cat = pd.Categorical(['a', 'b', 'c', 'a', 'b', 'c'])
+print (cat)
+2、
+cat=pd.Categorical(['a','b','c','a','b','c','d'], ['c', 'b', 'a'])
+cat = cat=pd.Categorical(['a','b','c','a','b','c','d'], ['c', 'b', 'a'])
+print (cat)
+这里，第二个参数表示类别。因此，在类别中不存在的任何值将被视为NaN
+3、
+重命名类别是通过将新值分配给series.cat.categories属性来完成的
+s = pd.Series(["a","b","c","a"], dtype="category")
+s.cat.categories = ["Group %s" % g for g in s.cat.categories]
+print (s.cat.categories)
+4、
+使用Categorical.add.categories()方法，可以追加新的类别。
+s = pd.Series(["a","b","c","a"], dtype="category")
+s = s.cat.add_categories([4])print (s.cat.categories)
+5、
+使用Categorical.remove_categories()方法，可以删除不需要的类别。
+s = pd.Series(["a","b","c","a"], dtype="category")
+print ("Original object:")
+print (s)
+print("=====================================")
+print ("After removal:")
+print (s.cat.remove_categories("a"))
