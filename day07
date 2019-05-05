@@ -194,3 +194,44 @@ print (s)
 print("=====================================")
 print ("After removal:")
 print (s.cat.remove_categories("a"))
+
+六、Pandas数据可视化
+1.
+如果索引由日期组成，则调用gct().autofmt_xdate()来格式化x轴，如上图所示。
+我们可以使用x和y关键字绘制一列与另一列。
+绘图方法允许除默认线图之外的少数绘图样式。 这些方法可以作为plot()的kind关键字参数提供。这些包括 -
+bar或barh为条形
+hist为直方图
+boxplot为盒型图
+area为“面积”
+scatter为散点图
+Boxplot可以绘制调用Series.box.plot()和DataFrame.box.plot()或DataFrame.boxplot()来可视化每列中值的分布。
+区域块图形以使用Series.plot.area()或DataFrame.plot.area()方法创建区域图形。
+饼状图可以使用DataFrame.plot.pie()方法创建。
+import pandas as pd
+import numpy as np
+# 堆积条形图
+df = pd.DataFrame(np.random.rand(10,4),columns=['a','b','c','d'])
+df.plot.bar()
+#水平条形图
+df.plot.barh(stacked=True)
+# 直方图
+df = pd.DataFrame({'a':np.random.randn(1000)+1,'b':np.random.randn(1000),'c':
+np.random.randn(1000) - 1}, columns=['a', 'b', 'c'])
+df.plot.hist(bins=20)
+#为每列绘制不同的直方图
+df=pd.DataFrame({'a':np.random.randn(1000)+1,'b':np.random.randn(1000),'c':
+np.random.randn(1000) - 1}, columns=['a', 'b', 'c'])
+df.hist(bins=20)
+#箱型图
+df = pd.DataFrame(np.random.rand(10, 5), columns=['A', 'B', 'C', 'D', 'E'])
+df.plot.box()
+# 区域块图形
+df = pd.DataFrame(np.random.rand(10, 4), columns=['a', 'b', 'c', 'd'])
+df.plot.area()
+#散点图
+df = pd.DataFrame(np.random.rand(50, 4), columns=['a', 'b', 'c', 'd'])
+df.plot.scatter(x='a', y='b')
+# 饼状图
+df = pd.DataFrame(3 * np.random.rand(4), index=['a', 'b', 'c', 'd'], columns=['x'])
+df.plot.pie(subplots=True)
