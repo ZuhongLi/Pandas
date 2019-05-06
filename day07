@@ -235,3 +235,25 @@ df.plot.scatter(x='a', y='b')
 # 饼状图
 df = pd.DataFrame(3 * np.random.rand(4), index=['a', 'b', 'c', 'd'], columns=['x'])
 df.plot.pie(subplots=True)
+
+
+七、Pandas IO工具
+1.
+Pandas I/O API是一套像pd.read_csv()一样返回Pandas对象的顶级读取器函数。
+读取文本文件(或平面文件)的两个主要功能是read_csv()和read_table()。它们都使用相同的解析代码来智能地将表格数据转换为DataFrame对象 -
+import pandas as pd
+df=pd.read_csv("temp.csv")
+print (df)
+df=pd.read_csv("temp.csv",index_col=['S.No'])
+print (df)
+2、
+dtype的列可以作为字典传递。
+df = pd.read_csv("temp.csv", dtype={'Salary': np.float64})
+print (df.dtypes)
+3、
+使用names参数指定标题的名称。
+df=pd.read_csv("temp.csv", names=['a', 'b', 'c','d','e'])print (df)
+4、
+skiprows跳过指定的行数。
+df=pd.read_csv("temp.csv", skiprows=2)
+print (df)
