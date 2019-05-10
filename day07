@@ -276,3 +276,24 @@ print (sts.to_dense())
 float64 − np.nan
 int64 − 0
 bool − False
+
+
+九、 Pandas与SQL的比较
+1.
+在SQL中，选择是使用逗号分隔的列列表(或选择所有列)来完成的， 在Pandas中，列的选择是通过传递列名到DataFrame
+SELECT total_bill, tip, smoker, time
+FROM tips
+LIMIT 5;
+
+tips=pd.read_csv(url)
+rs = tips[['total_bill', 'tip', 'smoker', 'time']].head(5)print(rs)
+2、
+数据帧可以通过多种方式进行过滤; 最直观的是使用布尔索引
+tips=pd.read_csv(url)
+rs = tips[tips['time'] == 'Dinner'].head(5)print(rs)
+3、
+此操作将获取整个数据集中每个组的记录数。 例如，一个查询提取性别的数量(即，按性别分组)  在Pandas中的等值语句将是 -
+SELECT sex, count(*)FROM tips
+GROUP BY sex;
+tips=pd.read_csv(url)
+rs = tips.groupby('sex').size()print(rs)
