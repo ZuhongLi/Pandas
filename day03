@@ -6,6 +6,7 @@ major_axis  axis=1
 minor_axis  axis=2
 dtype       每列的数据类型
 copy        复制数据，默认 - false
+deepcopy    深拷贝
 
 
 二、Pandas基本功能
