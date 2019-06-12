@@ -13,6 +13,7 @@ reset_option接受一个参数，并将该值设置为默认值。
 pd.reset_option("display.max_rows")
 
 
+
 二、常用参数
 1
 display.max_rows
