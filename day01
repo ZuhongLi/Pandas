@@ -32,11 +32,13 @@ df.iloc[3]通过传递的整数的位置选择
 dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 print(df.iloc[3])
+
 6、
 df.iloc[3:5,0:2]通过整数切片，类似于numpy/python
 dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 print(df.iloc[3:5,0:2])
+
 7、
 df.iat[1,1]要快速访问标量(等同于先前的方法)
 dates = pd.date_range('20170101', periods=6)
