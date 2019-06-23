@@ -4,6 +4,7 @@ dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4),
 index=dates, columns=list('ABCD'))
 print(df.sort_index(axis=1, ascending=False))
+
 2、
 df.sort_values()按值排序
 dates = pd.date_range('20170101', periods=6)
@@ -23,6 +24,7 @@ df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 
 print(df.loc[:,['A','B']])
 print(df.loc['20170102':'20170104',['A','B']])
+
 5、
 df.iloc[3]通过传递的整数的位置选择
 dates = pd.date_range('20170101', periods=6)
