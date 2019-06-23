@@ -38,6 +38,7 @@ df2 = pd.DataFrame(np.random.randn(2,3),columns=['col1','col2','col3'])
 # Padding NAN'sprint df2.reindex_like(df1)
 # Now Fill the NAN's with preceding Valuesprint ("Data Frame with Forward Fill:")print df2.reindex_like(df1,method='ffill')
 print df2.reindex_like(df1,method='ffill',limit=1)（limit限制填充的行数）
+
 4、
 rename()方法允许基于一些映射(字典或者系列)或任意函数来重新标记一个轴。
 看看下面的例子来理解这一概念。
@@ -51,10 +52,12 @@ index = {0 : 'apple', 1 : 'banana', 2 : 'durian'})
 iteritems()示例
 df = pd.DataFrame(np.random.randn(4,3),columns=['col1','col2','col3'])for key,value in df.iteritems():
 print (key,value)
+
 2、
 iterrows()返回迭代器，产生每个索引值以及包含每行数据的序列
 df = pd.DataFrame(np.random.randn(4,3),columns = ['col1','col2','col3'])for row_index,row in df.iterrows():
 print (row_index,row)
+
 3、
 itertuples()方法将为DataFrame中的每一行返回一个产生一个命名元组的迭代器。元组的第一个元素将是行的相应索引值，而剩余的值是行值。
 df = pd.DataFrame(np.random.randn(4,3),columns = ['col1','col2','col3'])
@@ -71,11 +74,13 @@ sorted_df=unsorted_df.sort_index()print (sorted_df)
 通过将布尔值传递给升序参数，可以控制排序顺序。 来看看下面的例子来理解一下
 unsorted_df = pd.DataFrame(np.random.randn(10,2),index=[1,4,6,2,3,5,9,8,0,7],columns = ['col2','col1'])
 sorted_df = unsorted_df.sort_index(ascending=False)print (sorted_df)
+
 3、
 过传递axis参数值为0或1，可以对列标签进行排序。 默认情况下，axis = 0，逐行排列。
 unsorted_df = pd.DataFrame(np.random.randn(10,2),index=[1,4,6,2,3,5,9,8,0,7],columns = ['col2','col1'])
 sorted_df=unsorted_df.sort_index(axis=1)
 print (sorted_df)
+
 4、
 像索引排序一样，sort_values()是按值排序的方法。它接受一个by参数，它将使用要与其排序值的DataFrame的列名称。
 unsorted_df = pd.DataFrame({'col1':[2,1,1,1],'col2':[1,3,2,4]})
@@ -91,6 +96,7 @@ lower()
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 
 print (s.str.lower())
+
 2
 upper()
 将Series/Index中的字符串转换为大写。
