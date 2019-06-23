@@ -12,11 +12,13 @@ df = pd.DataFrame(np.random.randn(6,4),
 index=dates,
 columns=list('ABCD'))
 print(df.sort_values(by='B'))
+
 3、
 df.loc[dates[0]]使用标签获取横截面
 dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 print(df.loc[dates[0]])
+
 4、
 df.loc[:,['A','B']]通过标签选择多轴，
 dates = pd.date_range('20170101', periods=6)
