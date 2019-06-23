@@ -44,11 +44,13 @@ df.iat[1,1]要快速访问标量(等同于先前的方法)
 dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 print(df.iat[1,1])
+
 8、
 bool索引，使用单列的值来选择数据
 dates = pd.date_range('20170101', periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=list('ABCD'))
 print(df[df.A > 0])
+
 9、
 使用isin()方法进行过滤
 dates = pd.date_range('20170101', periods=6)
