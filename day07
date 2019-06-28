@@ -12,6 +12,7 @@ ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
 df = pd.DataFrame(ipl_data)
 print (df.groupby('Team'))
 print (df.groupby(['Team','Year']).groups)
+
 2、
 使用groupby对象，可以遍历类似itertools.obj的对象。
 ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
@@ -34,6 +35,8 @@ ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
 df = pd.DataFrame(ipl_data)
 
 grouped = df.groupby('Year')print (grouped.get_group(2014))
+
+
 4、
 聚合函数为每个组返回单个聚合值。当创建了分组(group by)对象，就可以对分组数据执行多个聚合操作。
 一个比较常用的是通过聚合或等效的agg方法聚合 -
