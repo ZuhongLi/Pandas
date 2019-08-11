@@ -94,7 +94,6 @@ print (sorted_df)
 lower()
 将Series/Index中的字符串转换为小写。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
-
 print (s.str.lower())
 
 2、
@@ -102,42 +101,49 @@ upper()
 将Series/Index中的字符串转换为大写。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 print (s.str.upper())
+
 3、
 len()
 计算字符串长度。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 print (s.str.len())
+
 4、
 strip()
 帮助从两侧的系列/索引中的每个字符串中删除空格(包括换行符)。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 print (s.str.strip())
-5
+
+5、
 split(' ')
 用给定的模式拆分每个字符串。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 print (s.str.split(' '))
-6
+
+6、
 cat(sep=' ')
 使用给定的分隔符连接系列/索引元素。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 print (s.str.cat(sep=' <=> '))
-7
+
+7、
 get_dummies()
 返回具有单热编码值的数据帧(DataFrame)。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 
 print (s.str.get_dummies())
-8
+8、
 contains(pattern)
 如果元素中包含子字符串，则返回每个元素的布尔值True，否则为False。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 print (s.str.contains(' '))
-9
+
+9、
 replace(a,b)
 将值a替换为值b。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
 print (s.str.replace('@','$'))
+
 10
 repeat(value)
 重复每个元素指定的次数。
