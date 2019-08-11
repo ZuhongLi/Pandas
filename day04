@@ -90,24 +90,24 @@ print (sorted_df)
 
 五、Pandas字符串和文本数据
 
-1
+1、
 lower()
 将Series/Index中的字符串转换为小写。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 
 print (s.str.lower())
 
-2
+2、
 upper()
 将Series/Index中的字符串转换为大写。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 print (s.str.upper())
-3
+3、
 len()
 计算字符串长度。
 s = pd.Series(['Tom', 'William Rick', 'John', 'Alber@t', np.nan, '1234','SteveMinsu'])
 print (s.str.len())
-4
+4、
 strip()
 帮助从两侧的系列/索引中的每个字符串中删除空格(包括换行符)。
 s = pd.Series(['Tom ', ' William Rick', 'John', 'Alber@t'])
